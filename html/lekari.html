@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zoznam lekárov – MediTermín</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><span class="logo" aria-hidden="true">LOGO</span>MediTermín</a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Zobraziť menu">
+      <label for="nav-toggle" class="nav-button">Menu</label>
+      <nav class="site-nav" aria-label="Hlavná navigácia">
+        <ul>
+          <li><a href="lekari.html" aria-current="page">Lekári</a></li>
+          <li><a href="#">Moje termíny</a></li>
+          <li><a href="#">Profil</a></li>
+        </ul>
+        <div class="nav-auth">
+          <a class="btn" href="#">Meno Priezvisko</a>
+          <a class="btn btn-primary" href="#">Odhlásiť sa</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Nájdite lekára a objednajte sa</h1>
+
+      <form class="search" action="#" role="search">
+        <div class="field">
+          <label for="meno">Meno lekára</label>
+          <input type="search" id="meno" name="meno" placeholder="Napríklad Nováková">
+        </div>
+        <div class="field">
+          <label for="specializacia">Špecializácia</label>
+          <select id="specializacia" name="specializacia">
+            <option value="">Všetky špecializácie</option>
+            <option>Praktický lekár</option>
+            <option>Kardiológ</option>
+            <option>Dermatovenerológ</option>
+            <option>Zubný lekár</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="mesto">Mesto</label>
+          <select id="mesto" name="mesto">
+            <option value="">Všetky mestá</option>
+            <option>Žilina</option>
+            <option>Bratislava</option>
+            <option>Košice</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-primary">Hľadať</button>
+      </form>
+
+      <div class="filters" role="group" aria-label="Doplnkové filtre">
+        <label class="sr-only" for="dostupnost">Dostupnosť</label>
+        <select id="dostupnost"><option>Dostupnosť: tento týždeň</option><option>Dostupnosť: budúci týždeň</option></select>
+        <label class="sr-only" for="zoradenie">Zoradenie</label>
+        <select id="zoradenie"><option>Zoradiť: najbližší termín</option><option>Zoradiť: podľa mena</option></select>
+        <label class="sr-only" for="volne">Voľné termíny</label>
+        <select id="volne"><option>Len s voľným termínom</option><option>Všetci lekári</option></select>
+      </div>
+
+      <p class="results-count">Nájdených lekárov: 24</p>
+
+      <ul class="doctor-list">
+        <li>
+          <article class="doctor" aria-labelledby="lekar-1">
+            <div class="doctor-info">
+              <span class="avatar" aria-hidden="true">JN</span>
+              <div>
+                <h2 id="lekar-1">MUDr. Jana Nováková</h2>
+                <p>Praktický lekár</p>
+                <p>Poliklinika Centrum, Hlavná 12, Žilina</p>
+              </div>
+            </div>
+            <div class="week">
+              <div class="week-head">
+                <span>26.–30. október 2026</span>
+                <div class="week-nav">
+                  <button type="button" aria-label="Predchádzajúci týždeň">&lt;</button>
+                  <button type="button" aria-label="Nasledujúci týždeň">&gt;</button>
+                </div>
+              </div>
+            <ul class="days">
+              <li class="day">
+                <span class="day-name">Po</span><span class="day-date">26.10.</span>
+                <button type="button" class="slot">08:30</button>
+                <button type="button" class="slot">09:00</button>
+              </li>
+              <li class="day">
+                <span class="day-name">Ut</span><span class="day-date">27.10.</span>
+                <button type="button" class="slot">09:30</button>
+                <button type="button" class="slot">11:00</button>
+              </li>
+              <li class="day">
+                <span class="day-name">St</span><span class="day-date">28.10.</span>
+                <button type="button" class="slot">08:00</button>
+                <button type="button" class="slot">13:30</button>
+              </li>
+              <li class="day">
+                <span class="day-name">Št</span><span class="day-date">29.10.</span>
+                <button type="button" class="slot">10:00</button>
+                <button type="button" class="slot">14:30</button>
+              </li>
+              <li class="day">
+                <span class="day-name">Pi</span><span class="day-date">30.10.</span>
+                <button type="button" class="slot">09:00</button>
+                <button type="button" class="slot">12:30</button>
+              </li>
+            </ul>
+            </div>
+            <div class="doctor-action"><a class="btn" href="#">Zobraziť profil</a></div>
+          </article>
+        </li>
+        <li>
+          <article class="doctor" aria-labelledby="lekar-2">
+            <div class="doctor-info">
+              <span class="avatar" aria-hidden="true">PK</span>
+              <div>
+                <h2 id="lekar-2">MUDr. Peter Kováč</h2>
+                <p>Kardiológ, Internista</p>
+                <p>Kardiocentrum Sever, Národná 5, Žilina</p>
+              </div>
+            </div>
+            <div class="week">
+              <div class="week-head">
+                <span>26.–30. október 2026</span>
+                <div class="week-nav">
+                  <button type="button" aria-label="Predchádzajúci týždeň">&lt;</button>
+                  <button type="button" aria-label="Nasledujúci týždeň">&gt;</button>
+                </div>
+              </div>
+            <ul class="days">
+              <li class="day">
+                <span class="day-name">Po</span><span class="day-date">26.10.</span>
+                <span class="none" aria-label="Bez voľných termínov">–</span>
+              </li>
+              <li class="day">
+                <span class="day-name">Ut</span><span class="day-date">27.10.</span>
+                <button type="button" class="slot">10:30</button>
+                <button type="button" class="slot">11:30</button>
+              </li>
+              <li class="day">
+                <span class="day-name">St</span><span class="day-date">28.10.</span>
+                <span class="none" aria-label="Bez voľných termínov">–</span>
+              </li>
+              <li class="day">
+                <span class="day-name">Št</span><span class="day-date">29.10.</span>
+                <button type="button" class="slot">08:30</button>
+                <button type="button" class="slot">09:30</button>
+              </li>
+              <li class="day">
+                <span class="day-name">Pi</span><span class="day-date">30.10.</span>
+                <button type="button" class="slot">13:00</button>
+                <button type="button" class="slot">15:00</button>
+              </li>
+            </ul>
+            </div>
+            <div class="doctor-action"><a class="btn" href="#">Zobraziť profil</a></div>
+          </article>
+        </li>
+        <li>
+          <article class="doctor" aria-labelledby="lekar-3">
+            <div class="doctor-info">
+              <span class="avatar" aria-hidden="true">LH</span>
+              <div>
+                <h2 id="lekar-3">MUDr. Lucia Horváthová</h2>
+                <p>Dermatovenerológ</p>
+                <p>Ambulancia Zdravá koža, Mostná 8, Žilina</p>
+              </div>
+            </div>
+            <div class="week">
+              <div class="week-head">
+                <span>26.–30. október 2026</span>
+                <div class="week-nav">
+                  <button type="button" aria-label="Predchádzajúci týždeň">&lt;</button>
+                  <button type="button" aria-label="Nasledujúci týždeň">&gt;</button>
+                </div>
+              </div>
+            <p class="no-slots">Tento týždeň bez voľných termínov<strong>Najbližší voľný termín: 3.11. 08:30</strong></p>
+            </div>
+            <div class="doctor-action"><a class="btn" href="#">Zobraziť profil</a></div>
+          </article>
+        </li>
+      </ul>
+
+      <nav class="pagination" aria-label="Stránkovanie zoznamu lekárov">
+        <ul>
+          <li><a href="#" aria-label="Predchádzajúca strana">←</a></li>
+          <li><a href="#" aria-current="page">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#" aria-label="Nasledujúca strana">→</a></li>
+        </ul>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 MediTermín</p>
+      <ul>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Kontakt</a></li>
+        <li><a href="#">Časté vyhľadávanie</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>
