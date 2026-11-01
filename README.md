@@ -70,3 +70,16 @@ Rozširujúce funkcie
 - štatistiky pre správcu a lekára (vyťaženosť, počet zrušených termínov) s grafmi,
 - nahratie prílohy k termínu (napr. odporúčanie od iného lekára),
 - tmavý režim a vlastný CSS bez frameworku.
+
+## Spustenie aplikácie
+Aplikácia je postavená na frameworku [Vaííčko](https://github.com/thevajko/vaiicko).
+
+1. Spustiť Docker Desktop.
+2. V priečinku `docker` spustiť príkaz `docker compose up` (alebo v PHPStorme spustiť `docker/docker-compose.yml`).
+3. Otvoriť v prehliadači http://localhost/
+
+Implementované stránky:
+- Úvodná stránka – `http://localhost/` (HomeController, akcia index)
+- Zoznam lekárov – `http://localhost/?c=doctor` (DoctorController, akcia index)
+
+Pôvodná statická verzia (úloha 4) je v priečinku `html`.

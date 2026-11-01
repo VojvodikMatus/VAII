@@ -1,0 +1,163 @@
+/* MediTermín – spoločné štýly (základné rozloženie + zoznam lekárov) */
+:root {
+  --ink: #1c2b2d;
+  --muted: #5d7174;
+  --line: #cfdadb;
+  --bg: #f2f6f6;
+  --white: #ffffff;
+  --teal: #0e5a63;
+  --teal-dark: #0a444b;
+  --teal-soft: #e1eeee;
+  --radius: 6px;
+  --container: 1200px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.5;
+}
+main { flex: 1; padding: 1.5rem 0 2.5rem; }
+h1, h2, h3 { line-height: 1.25; margin: 0 0 .5rem; }
+h1 { font-size: 1.75rem; }
+p { margin: 0 0 1rem; }
+a { color: var(--teal); }
+:focus-visible { outline: 3px solid #e9a100; outline-offset: 2px; }
+.container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 1rem; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* tlačidlá */
+.btn {
+  display: inline-block; padding: .55rem 1rem; border: 1px solid var(--teal);
+  border-radius: var(--radius); background: var(--white); color: var(--teal);
+  font: inherit; font-weight: 600; text-decoration: none; text-align: center; cursor: pointer;
+}
+.btn:hover { background: var(--teal-soft); }
+.btn-primary { background: var(--teal); color: var(--white); }
+.btn-primary:hover { background: var(--teal-dark); }
+
+/* hlavička a navigácia */
+.site-header { position: sticky; top: 0; z-index: 10; background: var(--white); border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; align-items: center; gap: 1rem; min-height: 4rem; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: .65rem; color: var(--ink); text-decoration: none; font-size: 1.25rem; font-weight: 700; }
+.logo {
+  display: grid; place-items: center; width: 2.5rem; height: 2.5rem;
+  border: 2px solid var(--teal); border-radius: var(--radius);
+  background: var(--teal-soft); color: var(--teal); font-size: .65rem; font-weight: 700;
+}
+.nav-toggle { position: absolute; opacity: 0; pointer-events: none; }
+.nav-button {
+  display: none; margin-left: auto; padding: .45rem .8rem; cursor: pointer;
+  border: 1px solid var(--line); border-radius: var(--radius); font-weight: 600;
+}
+.nav-toggle:focus-visible + .nav-button { outline: 3px solid #e9a100; outline-offset: 2px; }
+.site-nav { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.site-nav ul { display: flex; flex-wrap: wrap; gap: .25rem; margin: 0; padding: 0; list-style: none; }
+.site-nav a:not(.btn) { display: block; padding: .5rem .8rem; border-radius: var(--radius); color: var(--ink); text-decoration: none; }
+.site-nav a:not(.btn):hover { background: var(--bg); }
+.site-nav a[aria-current="page"] { background: var(--teal); color: var(--white); }
+.nav-auth { display: flex; gap: .5rem; }
+
+/* pätička */
+.site-footer { border-top: 1px solid var(--line); background: var(--white); padding: 1.25rem 0; color: var(--muted); font-size: .9rem; }
+.footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; }
+.footer-inner ul { display: flex; gap: 1rem; margin: 0; padding: 0; list-style: none; }
+
+/* zástupný obsah (index.html) */
+.placeholder {
+  display: grid; place-items: center; min-height: 22rem; padding: 2rem; text-align: center;
+  border: 2px dashed var(--line); border-radius: var(--radius); background: var(--teal-soft); color: var(--teal-dark);
+}
+.placeholder strong { display: block; font-size: 1.4rem; margin-bottom: .25rem; }
+.lead { color: var(--muted); max-width: 60ch; }
+
+/* vyhľadávanie a filtre */
+.search {
+  display: grid; grid-template-columns: 2fr 1.5fr 1.2fr auto; gap: .75rem; align-items: end;
+  padding: 1rem; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.field label { display: block; margin-bottom: .2rem; font-size: .85rem; font-weight: 600; }
+.field input, .field select, .filters select {
+  width: 100%; padding: .55rem .65rem; border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--white); color: var(--ink); font: inherit;
+}
+.filters { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0; }
+.filters select { width: auto; max-width: 100%; border-radius: 999px; padding: .4rem .9rem; font-size: .9rem; }
+.results-count { margin: 0 0 .75rem; font-weight: 600; }
+
+/* karty lekárov */
+.doctor-list { display: grid; gap: .75rem; margin: 0; padding: 0; list-style: none; }
+.doctor {
+  display: grid; align-items: center; gap: 1rem 1.5rem; padding: 1rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr) auto;
+  grid-template-areas: "info week action";
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.doctor-info { grid-area: info; display: flex; align-items: center; gap: .85rem; min-width: 0; }
+.avatar {
+  flex: none; display: grid; place-items: center; width: 3.5rem; height: 3.5rem;
+  border-radius: 50%; background: var(--teal-soft); color: var(--teal); font-weight: 700;
+}
+.doctor h2 { font-size: 1.05rem; margin: 0; }
+.doctor-info p { margin: 0; font-size: .9rem; color: var(--muted); }
+.week { grid-area: week; min-width: 0; }
+.week-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: .4rem; font-size: .85rem; color: var(--muted); }
+.week-nav { display: flex; gap: .25rem; }
+.week-nav button {
+  width: 2rem; height: 2rem; border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--white); color: var(--ink); font: inherit; font-weight: 700; cursor: pointer;
+}
+.days { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .4rem; margin: 0; padding: 0; list-style: none; }
+.day { text-align: center; }
+.day-name { display: block; font-size: .85rem; font-weight: 700; }
+.day-date { display: block; margin-bottom: .3rem; font-size: .75rem; color: var(--muted); }
+.slot {
+  display: block; width: 100%; margin-bottom: .3rem; padding: .25rem 0; font: inherit; font-size: .8rem;
+  border: 1px solid var(--teal); border-radius: var(--radius); background: var(--white); color: var(--teal-dark); cursor: pointer;
+}
+.slot:hover { background: var(--teal); color: var(--white); }
+.none { display: block; padding-top: .35rem; color: var(--muted); }
+.no-slots { margin: 0; padding: .75rem 0; text-align: center; color: var(--muted); font-size: .9rem; }
+.no-slots strong { display: block; color: var(--ink); }
+.doctor-action { grid-area: action; }
+
+/* stránkovanie */
+.pagination ul { display: flex; justify-content: center; flex-wrap: wrap; gap: .35rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.pagination a {
+  display: block; min-width: 2.4rem; padding: .4rem .6rem; text-align: center; text-decoration: none;
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); color: var(--ink);
+}
+.pagination a[aria-current="page"] { background: var(--teal); border-color: var(--teal); color: var(--white); font-weight: 700; }
+
+/* tablet */
+@media (max-width: 1000px) {
+  .doctor { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "info action" "week week"; }
+  .search { grid-template-columns: 1fr 1fr; }
+  .search .btn { grid-column: 1 / -1; }
+}
+
+/* mobil */
+@media (max-width: 768px) {
+  .nav-button { display: block; }
+  .site-nav { display: none; flex-basis: 100%; flex-direction: column; align-items: stretch; padding-bottom: 1rem; }
+  .nav-toggle:checked ~ .site-nav { display: flex; }
+  .site-nav ul { flex-direction: column; }
+  .nav-auth { flex-direction: column; }
+}
+@media (max-width: 560px) {
+  h1 { font-size: 1.45rem; }
+  .search { grid-template-columns: 1fr; }
+  .doctor { grid-template-columns: 1fr; grid-template-areas: "info" "week" "action"; }
+  .doctor-action .btn { width: 100%; }
+  .days { gap: .25rem; }
+  .slot { font-size: .72rem; }
+}

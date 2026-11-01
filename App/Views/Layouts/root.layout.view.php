@@ -1,5 +1,5 @@
 <?php
-
+// Rozloženie stránky – vytvorené s pomocou AI (Claude), upravené autorom
 /** @var string $contentHTML */
 /** @var \Framework\Auth\AppUser $user */
 /** @var \Framework\Support\LinkGenerator $link */
@@ -7,52 +7,46 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= App\Configuration::APP_NAME ?></title>
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= $link->asset('favicons/apple-touch-icon.png') ?>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<?= $link->asset('favicons/favicon-32x32.png') ?>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= $link->asset('favicons/favicon-16x16.png') ?>">
-    <link rel="manifest" href="<?= $link->asset('favicons/site.webmanifest') ?>">
-    <link rel="shortcut icon" href="<?= $link->asset('favicons/favicon.ico') ?>">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="<?= $link->asset('css/styl.css') ?>">
-    <script src="<?= $link->asset('js/script.js') ?>"></script>
+    <link rel="stylesheet" href="<?= $link->asset('css/style.css') ?>">
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="<?= $link->url('home.index') ?>">
-            <img src="<?= $link->asset('images/vaiicko_logo.png') ?>" title="<?= App\Configuration::APP_NAME ?>" alt="Framework Logo">
-        </a>
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="<?= $link->url('home.contact') ?>">Contact</a>
-            </li>
-        </ul>
-        <?php if ($user->isLoggedIn()) { ?>
-            <span class="navbar-text">Logged in user: <b><?= e($user->getName()) ?></b></span>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $link->url('auth.logout') ?>">Log out</a>
-                </li>
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="<?= $link->url('home.index') ?>"><span class="logo" aria-hidden="true">LOGO</span>MediTermín</a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Zobraziť menu">
+        <label for="nav-toggle" class="nav-button">Menu</label>
+        <nav class="site-nav" aria-label="Hlavná navigácia">
+            <ul>
+                <li><a href="<?= $link->url('doctor.index') ?>">Lekári</a></li>
+                <li><a href="#">Moje termíny</a></li>
+                <li><a href="#">Profil</a></li>
             </ul>
-        <?php } else { ?>
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= App\Configuration::LOGIN_URL ?>">Log in</a>
-                </li>
-            </ul>
-        <?php } ?>
+            <div class="nav-auth">
+                <a class="btn" href="#">Prihlásiť sa</a>
+                <a class="btn btn-primary" href="#">Registrovať sa</a>
+            </div>
+        </nav>
     </div>
-</nav>
-<div class="container-fluid mt-3">
-    <div class="web-content">
+</header>
+
+<main>
+    <div class="container">
         <?= $contentHTML ?>
     </div>
-</div>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <p>© 2026 MediTermín</p>
+        <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Kontakt</a></li>
+            <li><a href="#">Časté vyhľadávanie</a></li>
+        </ul>
+    </div>
+</footer>
 </body>
 </html>
