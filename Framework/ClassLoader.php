@@ -1,6 +1,5 @@
 <?php
 
-namespace Framework;
 /**
  * Class ClassLoader
  * Provides an automated class loading mechanism based on namespaces.
