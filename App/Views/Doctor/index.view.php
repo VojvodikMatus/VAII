@@ -1,4 +1,10 @@
-<?php // Zoznam lekárov – statický obsah z úlohy 4, vytvorené s pomocou AI (Claude) ?>
+<?php
+// Zoznam lekárov načítaný z databázy – vytvorené s pomocou AI (Claude), upravené autorom
+
+/** @var array<array{doctor: \App\Models\Doctor, user: \App\Models\User, clinic: \App\Models\Clinic, specializations: \App\Models\Specialization[]}> $doctors */
+/** @var \App\Models\Specialization[] $specializations */
+/** @var \Framework\Support\LinkGenerator $link */
+?>
 <h1>Nájdite lekára a objednajte sa</h1>
 
 <form class="search" action="#" role="search">
@@ -10,10 +16,9 @@
         <label for="specializacia">Špecializácia</label>
         <select id="specializacia" name="specializacia">
             <option value="">Všetky špecializácie</option>
-            <option>Praktický lekár</option>
-            <option>Kardiológ</option>
-            <option>Dermatovenerológ</option>
-            <option>Zubný lekár</option>
+            <?php foreach ($specializations as $specialization) : ?>
+                <option value="<?= $specialization->getId() ?>"><?= e($specialization->getName()) ?></option>
+            <?php endforeach ?>
         </select>
     </div>
     <div class="field">
@@ -37,128 +42,31 @@
     <select id="volne"><option>Len s voľným termínom</option><option>Všetci lekári</option></select>
 </div>
 
-<p class="results-count">Nájdených lekárov: 24</p>
+<p class="results-count">Nájdených lekárov: <?= count($doctors) ?></p>
+
+<?php if (count($doctors) === 0) : ?>
+    <p class="empty">Zatiaľ tu nie sú žiadni lekári.</p>
+<?php endif ?>
 
 <ul class="doctor-list">
-    <li>
-        <article class="doctor" aria-labelledby="lekar-1">
-            <div class="doctor-info">
-                <span class="avatar" aria-hidden="true">JN</span>
-                <div>
-                    <h2 id="lekar-1">MUDr. Jana Nováková</h2>
-                    <p>Praktický lekár</p>
-                    <p>Poliklinika Centrum, Hlavná 12, Žilina</p>
-                </div>
-            </div>
-            <div class="week">
-                <div class="week-head">
-                    <span>26.–30. október 2026</span>
-                    <div class="week-nav">
-                        <button type="button" aria-label="Predchádzajúci týždeň">&lt;</button>
-                        <button type="button" aria-label="Nasledujúci týždeň">&gt;</button>
+    <?php foreach ($doctors as $item) : ?>
+        <li>
+            <article class="doctor" aria-labelledby="lekar-<?= $item['doctor']->getId() ?>">
+                <div class="doctor-info">
+                    <span class="avatar" aria-hidden="true"><?= e($item['user']->getInitials()) ?></span>
+                    <div>
+                        <h2 id="lekar-<?= $item['doctor']->getId() ?>"><?= e($item['user']->getFullName()) ?></h2>
+                        <p><?= e(implode(', ', array_map(fn($s) => $s->getName(), $item['specializations']))) ?></p>
+                        <p><?= e($item['clinic']->getFullAddress()) ?></p>
                     </div>
                 </div>
-                <ul class="days">
-                    <li class="day">
-                        <span class="day-name">Po</span><span class="day-date">26.10.</span>
-                        <button type="button" class="slot">08:30</button>
-                        <button type="button" class="slot">09:00</button>
-                    </li>
-                    <li class="day">
-                        <span class="day-name">Ut</span><span class="day-date">27.10.</span>
-                        <button type="button" class="slot">09:30</button>
-                        <button type="button" class="slot">11:00</button>
-                    </li>
-                    <li class="day">
-                        <span class="day-name">St</span><span class="day-date">28.10.</span>
-                        <button type="button" class="slot">08:00</button>
-                        <button type="button" class="slot">13:30</button>
-                    </li>
-                    <li class="day">
-                        <span class="day-name">Št</span><span class="day-date">29.10.</span>
-                        <button type="button" class="slot">10:00</button>
-                        <button type="button" class="slot">14:30</button>
-                    </li>
-                    <li class="day">
-                        <span class="day-name">Pi</span><span class="day-date">30.10.</span>
-                        <button type="button" class="slot">09:00</button>
-                        <button type="button" class="slot">12:30</button>
-                    </li>
-                </ul>
-            </div>
-            <div class="doctor-action"><a class="btn" href="#">Zobraziť profil</a></div>
-        </article>
-    </li>
-    <li>
-        <article class="doctor" aria-labelledby="lekar-2">
-            <div class="doctor-info">
-                <span class="avatar" aria-hidden="true">PK</span>
-                <div>
-                    <h2 id="lekar-2">MUDr. Peter Kováč</h2>
-                    <p>Kardiológ, Internista</p>
-                    <p>Kardiocentrum Sever, Národná 5, Žilina</p>
+                <div class="week">
+                    <p class="no-slots">Rozpis voľných termínov bude doplnený neskôr.</p>
                 </div>
-            </div>
-            <div class="week">
-                <div class="week-head">
-                    <span>26.–30. október 2026</span>
-                    <div class="week-nav">
-                        <button type="button" aria-label="Predchádzajúci týždeň">&lt;</button>
-                        <button type="button" aria-label="Nasledujúci týždeň">&gt;</button>
-                    </div>
-                </div>
-                <ul class="days">
-                    <li class="day">
-                        <span class="day-name">Po</span><span class="day-date">26.10.</span>
-                        <span class="none" aria-label="Bez voľných termínov">–</span>
-                    </li>
-                    <li class="day">
-                        <span class="day-name">Ut</span><span class="day-date">27.10.</span>
-                        <button type="button" class="slot">10:30</button>
-                        <button type="button" class="slot">11:30</button>
-                    </li>
-                    <li class="day">
-                        <span class="day-name">St</span><span class="day-date">28.10.</span>
-                        <span class="none" aria-label="Bez voľných termínov">–</span>
-                    </li>
-                    <li class="day">
-                        <span class="day-name">Št</span><span class="day-date">29.10.</span>
-                        <button type="button" class="slot">08:30</button>
-                        <button type="button" class="slot">09:30</button>
-                    </li>
-                    <li class="day">
-                        <span class="day-name">Pi</span><span class="day-date">30.10.</span>
-                        <button type="button" class="slot">13:00</button>
-                        <button type="button" class="slot">15:00</button>
-                    </li>
-                </ul>
-            </div>
-            <div class="doctor-action"><a class="btn" href="#">Zobraziť profil</a></div>
-        </article>
-    </li>
-    <li>
-        <article class="doctor" aria-labelledby="lekar-3">
-            <div class="doctor-info">
-                <span class="avatar" aria-hidden="true">LH</span>
-                <div>
-                    <h2 id="lekar-3">MUDr. Lucia Horváthová</h2>
-                    <p>Dermatovenerológ</p>
-                    <p>Ambulancia Zdravá koža, Mostná 8, Žilina</p>
-                </div>
-            </div>
-            <div class="week">
-                <div class="week-head">
-                    <span>26.–30. október 2026</span>
-                    <div class="week-nav">
-                        <button type="button" aria-label="Predchádzajúci týždeň">&lt;</button>
-                        <button type="button" aria-label="Nasledujúci týždeň">&gt;</button>
-                    </div>
-                </div>
-                <p class="no-slots">Tento týždeň bez voľných termínov<strong>Najbližší voľný termín: 3.11. 08:30</strong></p>
-            </div>
-            <div class="doctor-action"><a class="btn" href="#">Zobraziť profil</a></div>
-        </article>
-    </li>
+                <div class="doctor-action"><a class="btn" href="#">Zobraziť profil</a></div>
+            </article>
+        </li>
+    <?php endforeach ?>
 </ul>
 
 <nav class="pagination" aria-label="Stránkovanie zoznamu lekárov">

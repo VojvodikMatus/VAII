@@ -130,6 +130,42 @@ a { color: var(--teal); }
 .no-slots strong { display: block; color: var(--ink); }
 .doctor-action { grid-area: action; }
 
+/* správa údajov – tabuľky a formuláre (úloha 6) */
+.list-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .75rem; margin-bottom: 1rem; }
+.list-head h1 { margin: 0; }
+.empty { padding: 1.5rem; text-align: center; color: var(--muted); background: var(--white); border: 1px dashed var(--line); border-radius: var(--radius); }
+.btn-danger { border-color: #a12a2a; color: #a12a2a; }
+.btn-danger:hover { background: #f8e3e3; }
+.table-wrap { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th, .data-table td { padding: .75rem 1rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.data-table th { font-size: .85rem; color: var(--muted); }
+.data-table tbody tr:last-child td { border-bottom: 0; }
+.row-actions { display: flex; gap: .4rem; justify-content: flex-end; }
+.row-actions form { margin: 0; }
+.badge { display: inline-block; padding: .1rem .55rem; border-radius: 999px; background: var(--teal-soft); color: var(--teal-dark); font-size: .8rem; font-weight: 600; }
+.badge-off { background: #ececec; color: var(--muted); }
+.data-form {
+  display: grid; gap: 1rem; max-width: 40rem; padding: 1.25rem;
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.field textarea {
+  width: 100%; padding: .55rem .65rem; border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--white); color: var(--ink); font: inherit; resize: vertical;
+}
+.checkbox { display: flex; align-items: center; gap: .5rem; }
+.checkbox input { width: 1.1rem; height: 1.1rem; accent-color: var(--teal); }
+.form-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.flash {
+  margin: 0 0 1rem; padding: .75rem 1rem;
+  border: 1px solid var(--teal); border-radius: var(--radius); background: var(--teal-soft); color: var(--teal-dark);
+}
+.form-errors {
+  max-width: 40rem; margin: 0 0 1rem; padding: .75rem 1rem;
+  border: 1px solid #a12a2a; border-radius: var(--radius); background: #f8e3e3; color: #7a1f1f;
+}
+.form-errors ul { margin: 0; padding-left: 1.25rem; }
+
 /* stránkovanie */
 .pagination ul { display: flex; justify-content: center; flex-wrap: wrap; gap: .35rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
 .pagination a {
@@ -152,6 +188,14 @@ a { color: var(--teal); }
   .nav-toggle:checked ~ .site-nav { display: flex; }
   .site-nav ul { flex-direction: column; }
   .nav-auth { flex-direction: column; }
+
+  /* tabuľka sa na mobile zmení na karty: každý riadok pod seba, popis stĺpca z data-label */
+  .data-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .data-table tr { display: block; padding: .75rem 1rem; border-bottom: 1px solid var(--line); }
+  .data-table tbody tr:last-child { border-bottom: 0; }
+  .data-table td { display: block; padding: .2rem 0; border: 0; }
+  .data-table td[data-label]::before { content: attr(data-label) ": "; font-weight: 600; color: var(--muted); }
+  .row-actions { justify-content: flex-start; padding-top: .5rem; }
 }
 @media (max-width: 560px) {
   h1 { font-size: 1.45rem; }

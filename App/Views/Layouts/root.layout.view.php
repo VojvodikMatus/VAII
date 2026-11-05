@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= App\Configuration::APP_NAME ?></title>
     <link rel="stylesheet" href="<?= $link->asset('css/style.css') ?>">
+    <script src="<?= $link->asset('js/script.js') ?>" defer></script>
 </head>
 <body>
 <header class="site-header">
@@ -23,6 +24,7 @@
                 <li><a href="<?= $link->url('doctor.index') ?>">Lekári</a></li>
                 <li><a href="#">Moje termíny</a></li>
                 <li><a href="#">Profil</a></li>
+                <li><a href="<?= $link->url('specialization.index') ?>">Špecializácie</a></li>
             </ul>
             <div class="nav-auth">
                 <a class="btn" href="#">Prihlásiť sa</a>
