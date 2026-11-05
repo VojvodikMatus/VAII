@@ -4,7 +4,7 @@ namespace App;
 
 use Framework\Auth\DummyAuthenticator;
 use Framework\Core\ErrorHandler;
-use Framework\DB\DefaultConventions;
+use Framework\DB\SnakeConventions;
 
 /**
  * Class Configuration
@@ -54,7 +54,7 @@ class Configuration
      * Class name for the database naming conventions implementation. This should adhere to the IDbConvention interface.
      * The default implementation is DefaultConventions.
      */
-    public const DB_CONVENTIONS_CLASS = DefaultConventions::class;
+    public const DB_CONVENTIONS_CLASS = SnakeConventions::class;
 
     /**
      * Flag to enable or disable detailed exception stack traces. This feature is intended for development purposes

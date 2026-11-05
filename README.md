@@ -81,5 +81,10 @@ Aplikácia je postavená na frameworku [Vaííčko](https://github.com/thevajko/
 Implementované stránky:
 - Úvodná stránka – `http://localhost/` (HomeController, akcia index)
 - Zoznam lekárov – `http://localhost/?c=doctor` (DoctorController, akcia index)
+- Správa špecializácií (CRUD) – `http://localhost/?c=specialization` (SpecializationController)
+
+Databáza sa vytvorí zo skriptov v `docker/sql` pri prvom spustení kontajnera.
+Po zmene SQL skriptov treba kontajnery zmazať (`docker compose down`) a spustiť znova.
+Adminer: http://localhost:8080 (server `db`, používateľ `vaiicko_user`, heslo `dtb456`, databáza `vaiicko_db`).
 
 Pôvodná statická verzia (úloha 4) je v priečinku `html`.
