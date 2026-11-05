@@ -107,6 +107,14 @@ class User extends Model
         return trim($this->firstName . ' ' . $this->lastName);
     }
 
+    /**
+     * Iniciály pre avatar, napr. "JN".
+     */
+    public function getInitials(): string
+    {
+        return mb_substr((string)$this->firstName, 0, 1) . mb_substr((string)$this->lastName, 0, 1);
+    }
+
     public function save(): void
     {
         $now = date('Y-m-d H:i:s');
