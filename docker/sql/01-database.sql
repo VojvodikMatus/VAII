@@ -35,12 +35,14 @@ CREATE TABLE `doctors`
     `user_id`         INT NOT NULL,
     `clinic_id`       INT NOT NULL COMMENT 'ID kliniky, kde doktor pracuje',
     `bio`             TEXT NULL COMMENT 'Krátky popis doktora',
+    `appointment_length` SMALLINT NOT NULL DEFAULT 20 COMMENT 'Dĺžka jedného termínu v minútach',
     `created_at`      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Dátum registrácie doktora',
     `updated_at`      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Dátum poslednej aktualizácie doktora',
     PRIMARY KEY (`id`),
     UNIQUE KEY `unq_doctors_user` (`user_id`),
     FOREIGN KEY (`clinic_id`) REFERENCES `clinics`(`id`),
-    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+    CHECK (`appointment_length` BETWEEN 5 AND 120)  -- Termín trvá 5 až 120 minút
 ) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Tabuľka doktorov';
 
 CREATE TABLE `specializations`

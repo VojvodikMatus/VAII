@@ -18,10 +18,10 @@ VALUES (1, 'Poliklinika Centrum', 'Hlavná 12', 'Žilina', '010 01', 'Slovensko'
        (2, 'Kardiocentrum Sever', 'Národná 5', 'Žilina', '010 01', 'Slovensko'),
        (3, 'Ambulancia Zdravá koža', 'Mostná 8', 'Žilina', '010 01', 'Slovensko');
 
-INSERT INTO `doctors` (`id`, `user_id`, `clinic_id`, `bio`)
-VALUES (1, 2, 1, 'Všeobecná lekárka pre dospelých s 15-ročnou praxou.'),
-       (2, 3, 2, 'Kardiológ a internista, venuje sa najmä vysokému tlaku a arytmiám.'),
-       (3, 4, 3, NULL);
+INSERT INTO `doctors` (`id`, `user_id`, `clinic_id`, `bio`, `appointment_length`)
+VALUES (1, 2, 1, 'Všeobecná lekárka pre dospelých s 15-ročnou praxou.', 20),
+       (2, 3, 2, 'Kardiológ a internista, venuje sa najmä vysokému tlaku a arytmiám.', 30),
+       (3, 4, 3, NULL, 15);
 
 INSERT INTO `specializations` (`id`, `name`, `description`)
 VALUES (1, 'Praktický lekár', 'Všeobecná starostlivosť o dospelých pacientov, preventívne prehliadky.'),

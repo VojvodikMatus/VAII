@@ -166,6 +166,37 @@ a { color: var(--teal); }
 }
 .form-errors ul { margin: 0; padding-left: 1.25rem; }
 
+/* profil lekára */
+.back-link { margin: 0 0 1rem; }
+.muted { color: var(--muted); font-size: .9rem; }
+.profile-head {
+  display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; padding: 1.25rem;
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.profile-head h1 { margin: 0 0 .25rem; }
+.profile-head p { margin: 0 0 .35rem; }
+.profile-specs { color: var(--teal-dark); font-weight: 600; }
+.avatar-lg { width: 5rem; height: 5rem; font-size: 1.5rem; }
+.profile-grid { display: grid; grid-template-columns: 18rem minmax(0, 1fr); gap: 1rem; align-items: start; }
+.profile-card { padding: 1.25rem; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.profile-card h2 { margin: 0 0 .6rem; font-size: 1.1rem; }
+.profile-card address { margin-bottom: 1.25rem; font-style: normal; }
+.hours { display: grid; grid-template-columns: auto 1fr; gap: .3rem 1rem; margin: 0 0 .75rem; }
+.hours dt { font-weight: 600; }
+.hours dd { margin: 0; }
+.week-head h2 { margin: 0; color: var(--ink); font-size: 1.1rem; }
+.week-nav { align-items: center; }
+.week-nav a, .week-nav > span[aria-hidden] {
+  display: grid; place-items: center; width: 2rem; height: 2rem;
+  border: 1px solid var(--line); border-radius: var(--radius); color: var(--ink); font-weight: 700; text-decoration: none;
+}
+.week-nav a:hover { background: var(--teal-soft); }
+.week-nav > span[aria-hidden] { color: var(--line); }
+.week-range { padding: 0 .4rem; font-size: .9rem; color: var(--ink); }
+.days-week { grid-template-columns: repeat(7, minmax(0, 1fr)); margin-top: .75rem; }
+span.slot { cursor: default; }
+span.slot:hover { background: var(--white); color: var(--teal-dark); }
+
 /* stránkovanie */
 .pagination ul { display: flex; justify-content: center; flex-wrap: wrap; gap: .35rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
 .pagination a {
@@ -196,6 +227,9 @@ a { color: var(--teal); }
   .data-table td { display: block; padding: .2rem 0; border: 0; }
   .data-table td[data-label]::before { content: attr(data-label) ": "; font-weight: 600; color: var(--muted); }
   .row-actions { justify-content: flex-start; padding-top: .5rem; }
+
+  /* profil lekára: stĺpce pod seba */
+  .profile-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   h1 { font-size: 1.45rem; }
@@ -204,4 +238,14 @@ a { color: var(--teal); }
   .doctor-action .btn { width: 100%; }
   .days { gap: .25rem; }
   .slot { font-size: .72rem; }
+
+  .profile-head { flex-direction: column; }
+  .week-head { flex-wrap: wrap; gap: .5rem; }
+  /* týždeň: každý deň je riadok, termíny vedľa seba */
+  .days-week { grid-template-columns: 1fr; gap: 0; }
+  .days-week .day { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; padding: .5rem 0; border-bottom: 1px solid var(--line); text-align: left; }
+  .days-week .day-name { width: 1.75rem; }
+  .days-week .day-date { width: 3rem; margin: 0; }
+  .days-week .slot { width: auto; margin: 0; padding: .25rem .5rem; }
+  .days-week .none { padding: 0; }
 }

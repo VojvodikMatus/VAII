@@ -63,7 +63,7 @@
                 <div class="week">
                     <p class="no-slots">Rozpis voľných termínov bude doplnený neskôr.</p>
                 </div>
-                <div class="doctor-action"><a class="btn" href="#">Zobraziť profil</a></div>
+                <div class="doctor-action"><a class="btn" href="<?= $link->url('doctor.show', ['id' => $item['doctor']->getId()]) ?>">Zobraziť profil</a></div>
             </article>
         </li>
     <?php endforeach ?>

@@ -10,6 +10,7 @@ class Doctor extends Model
     protected ?int $userId = null;
     protected ?int $clinicId = null;
     protected ?string $bio = null;
+    protected ?int $appointmentLength = 20;
     protected ?string $createdAt = null;
     protected ?string $updatedAt = null;
 
@@ -46,6 +47,16 @@ class Doctor extends Model
     public function setBio(?string $bio): void
     {
         $this->bio = $bio;
+    }
+
+    public function getAppointmentLength(): ?int
+    {
+        return $this->appointmentLength;
+    }
+
+    public function setAppointmentLength(int $appointmentLength): void
+    {
+        $this->appointmentLength = $appointmentLength;
     }
 
     public function getCreatedAt(): ?string

@@ -8,6 +8,11 @@ class WorkingHour extends Model
 {
     protected static ?string $tableName = 'working_hours';
 
+    /**
+     * Dni v týždni tak, ako sú v stĺpci day_of_week (ENUM), očíslované podľa PHP: date('N') vráti 1 = pondelok … 7 = nedeľa.
+     */
+    public const DAYS = [1 => 'Pondelok', 2 => 'Utorok', 3 => 'Streda', 4 => 'Štvrtok', 5 => 'Piatok', 6 => 'Sobota', 7 => 'Nedeľa'];
+
     protected ?int $id = null;
     protected ?int $doctorId = null;
     protected ?string $dayOfWeek = null;
