@@ -100,6 +100,17 @@ class Doctor extends Model
     }
 
     /**
+     * Id špecializácií lekára, napr. [2, 3] – formulár podľa nich zaškrtne políčka.
+     *
+     * @return int[]
+     */
+    public function getSpecializationIds(): array
+    {
+        return array_map(fn(DoctorSpecialization $link) => $link->getSpecializationId(),
+            $this->getAllRelated(DoctorSpecialization::class));
+    }
+
+    /**
      * @return WorkingHour[]
      */
     public function getWorkingHours(): array

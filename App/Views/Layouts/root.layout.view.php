@@ -24,6 +24,7 @@
                 <li><a href="<?= $link->url('doctor.index') ?>">Lekári</a></li>
                 <li><a href="#">Moje termíny</a></li>
                 <li><a href="#">Profil</a></li>
+                <li><a href="<?= $link->url('doctor.manage') ?>">Správa lekárov</a></li>
                 <li><a href="<?= $link->url('specialization.index') ?>">Špecializácie</a></li>
             </ul>
             <div class="nav-auth">

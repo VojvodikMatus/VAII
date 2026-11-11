@@ -130,7 +130,7 @@ a { color: var(--teal); }
 .no-slots strong { display: block; color: var(--ink); }
 .doctor-action { grid-area: action; }
 
-/* správa údajov – tabuľky a formuláre (úloha 6) */
+/* správa údajov – tabuľky a formuláre */
 .list-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .75rem; margin-bottom: 1rem; }
 .list-head h1 { margin: 0; }
 .empty { padding: 1.5rem; text-align: center; color: var(--muted); background: var(--white); border: 1px dashed var(--line); border-radius: var(--radius); }
@@ -165,6 +165,15 @@ a { color: var(--teal); }
   border: 1px solid #a12a2a; border-radius: var(--radius); background: #f8e3e3; color: #7a1f1f;
 }
 .form-errors ul { margin: 0; padding-left: 1.25rem; }
+
+/* správa lekárov */
+.flash-error { border-color: #a12a2a; background: #f8e3e3; color: #7a1f1f; }
+.data-table .badge { margin: 0 .2rem .2rem 0; }
+.form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+fieldset.field { margin: 0; padding: 0; border: 0; }
+fieldset.field legend { margin-bottom: .35rem; padding: 0; font-size: .85rem; font-weight: 600; }
+.checkbox-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: .4rem 1rem; }
+.checkbox-list label { margin: 0; font-size: 1rem; font-weight: 400; }
 
 /* profil lekára */
 .back-link { margin: 0 0 1rem; }
@@ -228,6 +237,7 @@ span.slot:hover { background: var(--white); color: var(--teal-dark); }
   .data-table td[data-label]::before { content: attr(data-label) ": "; font-weight: 600; color: var(--muted); }
   .row-actions { justify-content: flex-start; padding-top: .5rem; }
 
+  .form-row { grid-template-columns: 1fr; }
   /* profil lekára: stĺpce pod seba */
   .profile-grid { grid-template-columns: 1fr; }
 }
@@ -241,6 +251,7 @@ span.slot:hover { background: var(--white); color: var(--teal-dark); }
 
   .profile-head { flex-direction: column; }
   .week-head { flex-wrap: wrap; gap: .5rem; }
+
   /* týždeň: každý deň je riadok, termíny vedľa seba */
   .days-week { grid-template-columns: 1fr; gap: 0; }
   .days-week .day { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; padding: .5rem 0; border-bottom: 1px solid var(--line); text-align: left; }

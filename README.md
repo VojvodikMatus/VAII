@@ -82,6 +82,8 @@ Implementované stránky:
 - Úvodná stránka – `http://localhost/` (HomeController, akcia index)
 - Zoznam lekárov – `http://localhost/?c=doctor` (DoctorController, akcia index)
 - Správa špecializácií (CRUD) – `http://localhost/?c=specialization` (SpecializationController)
+- Profil lekára s voľnými termínmi – `http://localhost/?c=doctor&a=show&id=1`
+- Správa lekárov (CRUD so špecializáciami, vzťah M:N) – `http://localhost/?c=doctor&a=manage`
 
 Databáza sa vytvorí zo skriptov v `docker/sql` pri prvom spustení kontajnera.
 Po zmene SQL skriptov treba kontajnery zmazať (`docker compose down`) a spustiť znova.
